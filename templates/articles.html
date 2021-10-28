@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Makaleler</h2>
+<hr>
+{% if articles %}
+<form action="/search" method="post">
+    <input type="text" name="keyword" class=" input-sm" maxlength="64" placeholder="Makale Ara" />
+    <button type="submit" class="btn btn-danger btn-lg">Arama</button>
+</form>
+<hr>
+{% for art in articles %}
+<h6><strong><a class="text-dark" href="/article/{{art.id}}">{{art["title"]}}</a></strong> - {{art["author"]}}</h5>
+    <hr>
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-danger">Bu blokta henüz makale yok. :(</div>
+    {% endif %}
+    {% endblock body %}
+    <a class="text-dark" href="/article/{{art.id}}"></a>
